@@ -1,4 +1,3 @@
-ctx=
 canvas=new fabric.Canvas("Mycanvas");
 // Create canvas variable
  block_y=1;
