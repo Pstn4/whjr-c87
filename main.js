@@ -1,20 +1,68 @@
-var images = ["https://i.postimg.cc/MGn9GJXw/family.jpg","https://i.postimg.cc/qqyYvVbq/grandpa.jpg", "https://i.postimg.cc/wjMnFtMX/father.jpg" , "https://i.postimg.cc/5ymDKL83/bro.jpg", "https://i.postimg.cc/JnL6wtrd/sister.jpg", "https://i.postimg.cc/bw5W5zSK/mother.jpg"];
-var names = ["Family Book","Ranbir Singh", "Diljeet Singh", "Rocky Singh", "Alia Singh", "Soni Singh"];
-var i = 0;
-function update()
+ctx=
+canvas=new fabric.Canvas("Mycanvas");
+// Create canvas variable
+ block_y=1;
+ block_x=1;
+
+block_image_width = 350;
+block_image_height = 430;
+
+var block_image_object= "";
+
+function new_image(get_image)
 {
-    i++;
-    var numbers_of_family_member_in_array = 5
-    if(i > numbers_of_family_member_in_array)
-      {
-          i = 0;
-      }
-    
-    //Debug the code to store list of images in updatedImage. Use images[i]
-    var updatedImage =images[i];
-    //Debug the code to store list of names in updatedName. Use names[i]
-    var updatedName = names[i] ;
- 
-    document.getElementById("family_member_image").src = updatedImage;
-    document.getElementById("family_member_name").innerHTML = updatedName;
+	// to upload images
+	fabric.Image.fromURL(get_image,function(Img)
+	{block_image_object=Img;
+	block_image_object.scaleToHeight(block_image_height);
+	block_image_object.scaleToWidth(block_image_width);
+	block_image_object.set({top:block_y,left:block_x});
+	canvas.add(block_image_object);
+		});
 }
+
+window.addEventListener("keydown", my_keydown);
+
+function my_keydown(e)
+{
+keyPressed = e.keyCode;
+console.log(keyPressed);
+
+	if(keyPressed == '82') // add appropriate keycode
+	{
+		new_image("rr1.png");
+		console.log("r")
+		// upload red ranger
+	}
+	if(keyPressed == '71')
+	{
+		block_x = 200;
+		new_image("gr.png");
+		console.log("g")
+		// upload green ranger
+	}
+	
+	if(keyPressed == '89')
+	{
+		block_x =350;
+		new_image("yr.png");
+		console.log("y")
+		// upload yellow ranger
+	}
+	if(keyPressed == '80')
+	{
+		block_x = 600;
+		new_image("pr1.png");
+		console.log("p")
+		// upload pink ranger
+	}
+	if(keyPressed == '66')
+	{
+		block_x = 700;
+		new_image("br1.png");
+		console.log("b")
+	// upload blue ranger
+	}
+	
+}
+
